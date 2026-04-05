@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Parthenope Group</title>
+
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #f4f6f9;
+}
+
+/* HEADER */
+header {
+  text-align: center;
+}
+
+/* CANVAS */
+canvas {
+  display: block;
+}
+
+/* SECCIONES */
+section {
+  padding: 40px;
+  text-align: center;
+}
+
+/* GALERIA */
+.galeria {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.galeria img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* PRODUCTOS */
+.productos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  width: 220px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 15px;
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+button {
+  background: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* WHATSAPP */
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  padding: 15px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- CANVAS BANNER -->
+<canvas id="banner" width="1000" height="250"></canvas>
+
+<section>
+  <h2>Compra a distribuidores y venta al detal</h2>
+</section>
+
+<section>
+  <h2>Nuestras Operaciones</h2>
+  <div class="galeria">
+    <img src="almacen.jpg">
+    <img src="trabajo.jpg">
+    <img src="proveedor.jpg">
+  </div>
+</section>
+
+<section>
+  <h2>Productos</h2>
+  <div class="productos">
+
+    <div class="card">
+      <img src="producto.jpg">
+      <h3>Producto A</h3>
+      <p>$10</p>
+      <button>Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="producto.jpg">
+      <h3>Producto B</h3>
+      <p>$15</p>
+      <button>Comprar</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/+17215214744" target="_blank" class="whatsapp">
+  💬 WhatsApp
+</a>
+
+<!-- SCRIPT CANVAS -->
+<script>
+const canvas = document.getElementById("banner");
+const ctx = canvas.getContext("2d");
+
+let x = 0;
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  // fondo degradado
+  let grad = ctx.createLinearGradient(0,0,canvas.width,0);
+  grad.addColorStop(0,"#007BFF");
+  grad.addColorStop(1,"#00AEEF");
+
+  ctx.fillStyle = grad;
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  // texto
+  ctx.fillStyle = "white";
+  ctx.font = "50px Arial";
+  ctx.fillText("Parthenope Group", 250, 120);
+
+  ctx.font = "20px Arial";
+  ctx.fillText("Distribución y venta minorista", 320, 170);
+
+  // línea animada
+  ctx.fillRect(x, 200, 100, 5);
+  x += 2;
+  if(x > canvas.width) x = -100;
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+</body>
+</html>
